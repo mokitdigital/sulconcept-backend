@@ -1,6 +1,6 @@
 import { createConnection } from 'typeorm';
 
-export const databaseProviders = [
+/* export const databaseProviders = [
   {
     provide: 'DATABASE_CONNECTION',
     useFactory: async () =>
@@ -11,19 +11,19 @@ export const databaseProviders = [
         username: 'q9yitswga4mm',
         password: 'pscale_pw_fY4DwHqUhIBSLHBPsNzpaopZkWiA4t3qoqveHf7q0hY',
         database: 'sulconcept_vps',
-        entities: [__dirname + '/../**/*.entity{.ts,.js}'],
+        
         synchronize: true,
-        ssl: true,
-        extra: {
-          ssl: {
-            "rejectUnauthorized": false
-          }
-        },
-      }),
-  },
-];
+        // ssl: true,
+        // extra: {
+          // ssl: {
+          //  "rejectUnauthorized": false
+          // }
+        // },
+      // }),
+  // },
+//]; */
 
-/* export const databaseProviders = [
+export const databaseProviders = [
   {
     provide: 'DATABASE_CONNECTION',
     useFactory: async () =>
@@ -34,8 +34,8 @@ export const databaseProviders = [
         username: 'root',
         password: 'lugano15',
         database: 'sulconcept_homologacao',
-        // TODO ENTITIES
-        synchronize: true,
+        entities: [__dirname + '/../**/*.entity{.ts,.js}'],
+        synchronize: false,
       }),
   },
-]; */
+];
