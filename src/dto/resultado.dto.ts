@@ -1,4 +1,5 @@
 export interface ResultadoDto {
   status: boolean;
-  mensagem: string
+  mensagem: string;
+  resultado?: any;
 }

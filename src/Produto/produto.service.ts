@@ -11,7 +11,7 @@ export class ProdutoService {
     private produtoRepository: Repository<Produto>,
   ) { }
 
-  create(data: CreateProdutoDto) {
+  async create(data: CreateProdutoDto) {
     const produto = new Produto()
 
     produto.codigo = data.codigo
@@ -32,24 +32,41 @@ export class ProdutoService {
 
     produto.idMarca = data.idMarca */
 
-    return this
-      .produtoRepository.save(produto)
+    try {
+      const result = await this
+        .produtoRepository.save(produto);
+      console.log("Produto salvo com sucesso! ", result);
+      return <ResultadoDto>{
+        status: true,
+        mensagem: "Usuário salvo com sucesso!"
+      };
+    } catch (error) {
+      console.log("Erro ao registrar o usuário!", error);
+      return <ResultadoDto>{
+        status: false,
+        mensagem: error
+      };
+    }
+  }
 
-      .then(result => {
-        console.log("Produto salvo com sucesso! ", result)
-        return <ResultadoDto>{
-          status: true,
-          mensagem: "Usuário salvo com sucesso!"
-        }
-      })
+  async findAll() {
+    try {
+      const result = await this
+      .produtoRepository.find()
 
-      .catch(error => {
-        console.log("Erro ao registrar o usuário!", error)
-        return <ResultadoDto>{
-          status: false,
-          mensagem: "Usuário não foi salvo..."
-        }
-      })
+      return <ResultadoDto>{
+        status: true,
+        mensagem: "Lista de produto pesquisado com sucesso!",
+        resultado: result
+      }
+
+    } catch(error) {
+      console.log("Erro ao listar os produtos!", error)
+      return <ResultadoDto>{
+        status: false,
+        mensagem: error
+      }
+    }
   }
 
 }
