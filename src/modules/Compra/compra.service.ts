@@ -63,7 +63,12 @@ export class CompraService {
   }
 
   async findOne(data: FindOneCompraDto) {
-    const compra
+    const compra = new Compra()
+
+    compra.idCompra = data.idCompra
+    compra.numero = data.numero
+    compra.url_nota_fiscal = data.url_nota_fiscal
+
     try {
       const result = await this
       .compraRepository.findOne()
