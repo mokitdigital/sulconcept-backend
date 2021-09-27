@@ -21,4 +21,21 @@ export class ImagensController {
       })
     }
   }
+
+  @Get()
+  async findAll(@Res() res: Response): Promise<Response> {
+    const resposta = await this.imagensService.findAll()
+
+    if (resposta.status) {
+      return res.status(HttpStatus.OK).json({
+        message: "Lista de imagens recebida com sucesso!",
+        response: resposta
+      })
+    } else {
+      return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
+        message: "Erro ao listar as imagens",
+        response: resposta
+      })
+    }
+  }
 }

@@ -35,4 +35,24 @@ export class ImagensService {
       };
     }
   }
+
+  async findAll() {
+    try {
+      const result = await this
+      .imagensRepository.find()
+
+      return <ResultadoDto>{
+        status: true,
+        mensagem: "Lista de imagens pesquisado com sucesso!",
+        resultado: result
+      }
+
+    } catch(error) {
+      console.log("Erro ao listar as imagens!", error)
+      return <ResultadoDto>{
+        status: false,
+        mensagem: error
+      }
+    }
+  }
 }

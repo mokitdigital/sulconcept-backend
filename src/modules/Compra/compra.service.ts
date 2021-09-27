@@ -3,6 +3,7 @@ import { ResultadoDto } from 'src/dto/resultado.dto';
 import { Repository } from 'typeorm';
 import { CreateCompraDto } from './dto/create-compra.dto';
 import { Compra } from './compra.entity';
+import { FindOneCompraDto } from './dto/findone-compra.dto';
 
 @Injectable()
 export class CompraService {
@@ -45,6 +46,27 @@ export class CompraService {
     try {
       const result = await this
       .compraRepository.find()
+
+      return <ResultadoDto>{
+        status: true,
+        mensagem: "Lista de compras pesquisado com sucesso!",
+        resultado: result
+      }
+
+    } catch(error) {
+      console.log("Erro ao listar as compras!", error)
+      return <ResultadoDto>{
+        status: false,
+        mensagem: error
+      }
+    }
+  }
+
+  async findOne(data: FindOneCompraDto) {
+    const compra
+    try {
+      const result = await this
+      .compraRepository.findOne()
 
       return <ResultadoDto>{
         status: true,

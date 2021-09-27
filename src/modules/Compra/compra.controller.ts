@@ -27,12 +27,12 @@ export class CompraController {
     const resposta = (await this.compraService.findAll())
 
     if(resposta.status) {
-      return res.status(HttpStatus.CREATED).json({
-        message: "Lista de Compras recebida com sucesso!",
+      return res.status(HttpStatus.OK).json({
+        message: "Lista de compras recebida com sucesso!",
         produtos: resposta.resultado
       })
     } else {
-      return res.status(HttpStatus.CREATED).json({
+      return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
         message: `Não foi possível listar as compras, ${resposta.mensagem}`
       })
     }
