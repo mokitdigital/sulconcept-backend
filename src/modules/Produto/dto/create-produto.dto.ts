@@ -9,9 +9,10 @@ export class CreateProdutoDto {
   indicado_para: string;
   composicao: string;
   estoque: number;
-
-  // Chaves estrangeiras
-  idImagens?: number;
+  imagem_primary: string;
+  imagem2: string;
+  imagem3: string;
+  imagem4: string;
 
   idModelo?: number;
 

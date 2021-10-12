@@ -33,4 +33,24 @@ export class ModeloService {
       };
     }
   }
+
+  async findAll() {
+    try {
+      const result = await this
+      .modeloRepository.find()
+
+      return <ResultadoDto>{
+        status: true,
+        mensagem: "Lista de modelos pesquisado com sucesso!",
+        resultado: result
+      }
+
+    } catch(error) {
+      console.log("Erro ao listar as modelos!", error)
+      return <ResultadoDto>{
+        status: false,
+        mensagem: error
+      }
+    }
+  }
 }

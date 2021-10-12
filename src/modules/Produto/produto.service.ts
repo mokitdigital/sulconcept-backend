@@ -24,6 +24,10 @@ export class ProdutoService {
     produto.indicado_para = data.indicado_para;
     produto.composicao = data.composicao;
     produto.estoque = data.estoque;
+    produto.imagem_primary = data.imagem_primary
+    produto.imagem2 = data.imagem2
+    produto.imagem3 = data.imagem3
+    produto.imagem4 = data.imagem4
 
     // Chaves estrangeiras
     /* produto.idImagens = data.idImagens

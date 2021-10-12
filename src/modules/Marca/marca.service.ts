@@ -34,4 +34,24 @@ export class MarcaService {
       };
     }
   }
+
+  async findAll() {
+    try {
+      const result = await this
+      .marcaRepository.find()
+
+      return <ResultadoDto>{
+        status: true,
+        mensagem: "Lista de marca pesquisado com sucesso!",
+        resultado: result
+      }
+
+    } catch(error) {
+      console.log("Erro ao listar as marca!", error)
+      return <ResultadoDto>{
+        status: false,
+        mensagem: error
+      }
+    }
+  }
 }

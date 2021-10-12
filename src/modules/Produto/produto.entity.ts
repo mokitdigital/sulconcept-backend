@@ -41,6 +41,18 @@ export class Produto {
   @Column()
   estoque: number;
 
+  @Column({ length: 500 })
+  imagem_primary: string;
+
+  @Column({ length: 500 })
+  imagem2: string;
+
+  @Column({ length: 500 })
+  imagem3: string;
+
+  @Column({ length: 500 })
+  imagem4: string;
+
   // Chaves estrangeiras
 
   /* @OneToOne(_type => Imagens)

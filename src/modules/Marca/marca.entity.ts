@@ -11,6 +11,6 @@ export class Marca {
   @Column({ length: 100 })
   descricao: string;
 
-  @Column({ length: 255 })
+  @Column({ length: 500 })
   imagem: string;
 }
